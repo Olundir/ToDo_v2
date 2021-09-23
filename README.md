@@ -2,7 +2,7 @@
 
 ## To see the live site follow the link below:
 
-https://olundir.github.io/ToDoAppv2/
+https://olundir.github.io/ToDo_v2/
 
 #### Project done with assets thanks to Front End Mentor
 
