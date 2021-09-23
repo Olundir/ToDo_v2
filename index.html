@@ -11,5 +11,31 @@
     <link rel="stylesheet" href="style.css" />
     <title>TO_DO_V2</title>
   </head>
-  <body></body>
+  <body>
+    <div class="main__container">
+      <h1>TODO <span class="themeSwitch"></span></h1>
+      <input type="text" name="toDoInputField" id="toDo" class="inputField" placeholder="Create a new todo..." />
+      <div class="main">
+        <div class="container">
+          <div id="container__todo"></div>
+          <div class="container__nav">
+            <h3><span class="no__items">0</span> items left</h3>
+            <!-- Button for clearing Completed entries  -->
+            <button class="btn__clear">Clear Completed</button>
+            <!-- Radio for choosing the displayed entries -->
+          </div>
+          <div class="radio__container">
+            <label class="radio__label" for="All">All</label>
+            <input class="display__radio" type="radio" name="display" id="All" checked />
+            <label class="radio__label" for="Active">Active</label>
+            <input class="display__radio" type="radio" name="display" id="Active" />
+            <label class="radio__label" for="Completed">Completed</label>
+            <input class="display__radio" type="radio" name="display" id="Completed" />
+          </div>
+          <h3>Drag and drop to reorder list</h3>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
 </html>

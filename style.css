@@ -1,0 +1,158 @@
+body {
+  background-color: hsl(235, 21%, 11%);
+  color: hsl(236, 33%, 92%);
+  font-family: "Josefin Sans", sans-serif;
+  background-image: url("images/bg-mobile-dark.jpg");
+  background-repeat: no-repeat;
+  font-size: 10px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* main container  */
+.main__container {
+  max-width: 325px;
+  margin: 10% auto;
+}
+
+/* "LOGO"  */
+h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+/* Input  */
+
+#toDo {
+  width: 80%;
+  padding: 5% 10%;
+  border: none;
+  background-color: hsl(235, 24%, 19%);
+  color: hsl(234, 39%, 85%);
+  font-weight: 700;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+/* List items  */
+#container__todo {
+  background-color: hsl(235, 24%, 19%);
+  border-radius: 5px;
+  box-shadow: 0 10px 20px hsl(235, 21%, 6%);
+}
+
+.list__item {
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr 9fr 1fr;
+  background-color: hsl(235, 24%, 19%);
+  padding: 20px 15px;
+  /* -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; */
+  border-top: 1px solid hsl(237, 14%, 26%);
+}
+.list__item:first-of-type {
+  border-radius: 5px 5px 0 0;
+  border-top: none;
+}
+.list__item:last-of-type {
+  border-bottom: 1px solid hsl(237, 14%, 26%);
+}
+
+h2 {
+  color: hsl(234, 39%, 85%);
+  position: relative;
+  top: 5px;
+  font-size: 0.9rem;
+  padding-left: 5px;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid hsl(237, 14%, 26%);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.del__cross {
+  width: 20px;
+  height: 100%;
+  background-image: url("images/icon-cross.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Selection */
+
+.container__nav {
+  background-color: hsl(235, 24%, 19%);
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  box-shadow: 0 10px 20px hsl(235, 21%, 6%);
+}
+.btn__clear {
+  background-color: hsl(235, 24%, 19%);
+  border: none;
+  padding: 10px;
+  color: hsl(233, 14%, 35%);
+  font-family: "Josefin Sans", sans-serif;
+  cursor: pointer;
+}
+h3 {
+  color: hsl(233, 14%, 35%);
+}
+.radio__container {
+  background-color: hsl(235, 24%, 19%);
+  border-radius: 5px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 10px 20px hsl(235, 21%, 6%);
+}
+.display__radio {
+  position: absolute;
+  visibility: hidden;
+}
+.radio__label {
+  color: hsl(233, 14%, 35%);
+  font-size: 0.8rem;
+  padding: 15px 10px;
+  cursor: pointer;
+}
+
+.radio__label:hover,
+.btn__clear:hover {
+  color: hsl(236, 33%, 92%);
+}
+
+.radio__container + h3 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* States  */
+
+.checkImg {
+  background: url("images/icon-check.svg"), linear-gradient(90deg, #57ddff, #c058f3);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+.line__through {
+  color: hsl(233, 14%, 35%);
+  text-decoration: line-through;
+}
+.hidden {
+  visibility: hidden;
+  position: absolute;
+}
