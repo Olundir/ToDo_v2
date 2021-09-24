@@ -21,9 +21,17 @@ function createItem(text, id) {
   let newItem = document.createElement("div");
   newItem.classList.add("list__item");
   newItem.classList.add("active");
+  newItem.setAttribute(`draggable`, `true`);
   newItem.setAttribute("id", `${id}`);
   newItem.innerHTML = `<div class="check${id} checkbox test"></div><h2 class="check${id}">${text}</h2><div id="cross${id}" class="del__cross"></div>`;
   document.getElementById("container__todo").appendChild(newItem);
+  newItem.addEventListener("dragstart", () => {
+    newItem.classList.add("dragging");
+  });
+
+  newItem.addEventListener("dragend", () => {
+    newItem.classList.remove("dragging");
+  });
   listenForCheck(newItem, id);
   removeItem(id);
 }
@@ -175,12 +183,20 @@ function createItemFromStorage(text, id, state) {
   newItem.classList.add("list__item");
   newItem.classList.add(state);
   newItem.setAttribute("id", `${id}`);
+  newItem.setAttribute(`draggable`, `true`);
   let isCompleted = "";
   state === "completed" ? (isCompleted = "line__through") : (isCompleted = "");
   let img = "";
   state === "completed" ? (img = "checkImg") : (img = "");
   newItem.innerHTML = `<div class="check${id} checkbox ${img}"></div><h2 class="check${id} ${isCompleted}">${text}</h2><div id="cross${id}" class="del__cross"></div>`;
   document.getElementById("container__todo").appendChild(newItem);
+  newItem.addEventListener("dragstart", () => {
+    newItem.classList.add("dragging");
+  });
+
+  newItem.addEventListener("dragend", () => {
+    newItem.classList.remove("dragging");
+  });
   listenForCheck(newItem, id);
   removeItem(id);
 }
@@ -195,3 +211,35 @@ function createStorageItemFromStorage(text, id, state) {
 }
 
 siteInit();
+
+// drag & drop
+const container = document.getElementById("container__todo");
+
+container.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  const afterElement = getDragAfterElement(container, e.clientY);
+  const draggable = document.querySelector(".dragging");
+  if (afterElement == null) {
+    container.appendChild(draggable);
+  } else {
+    container.insertBefore(draggable, afterElement);
+  }
+  container.getAttribute("height");
+});
+
+function getDragAfterElement(container, y) {
+  const draggableElements = [...container.querySelectorAll(".list__item:not(.dragging)")];
+
+  return draggableElements.reduce(
+    (closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child };
+      } else {
+        return closest;
+      }
+    },
+    { offset: Number.NEGATIVE_INFINITY }
+  ).element;
+}

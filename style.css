@@ -80,6 +80,9 @@ h2 {
   position: relative;
   box-sizing: border-box;
 }
+.checkbox:hover {
+  border: 1px solid #8c9bf9;
+}
 
 .del__cross {
   width: 20px;
