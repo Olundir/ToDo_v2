@@ -127,13 +127,16 @@ const radioLabel = document.querySelectorAll(".radio__label");
 radioLabel.forEach((label) => {
   label.addEventListener("click", (e) => {
     const items = document.querySelectorAll(".list__item");
-
+    radioLabel.forEach((lab) => lab.classList.remove("active__selection"));
     if (e.target.innerHTML === "Completed") {
       showCompleted(items);
+      label.classList.add("active__selection");
     } else if (e.target.innerHTML === "Active") {
       showActive(items);
+      label.classList.add("active__selection");
     } else {
       showAll(items);
+      label.classList.add("active__selection");
     }
   });
 });
@@ -242,4 +245,66 @@ function getDragAfterElement(container, y) {
     },
     { offset: Number.NEGATIVE_INFINITY }
   ).element;
+}
+
+// Theme switch
+const theme = document.querySelector(".themeSwitch");
+const body = document.querySelector("body");
+const radioContainer = document.querySelector(".radio__container");
+const cont = document.querySelector(".container__nav");
+
+theme.addEventListener("click", () => {
+  theme.classList.contains("sun") ? setLightMode() : setDarkMode();
+});
+
+function setLightMode() {
+  const li = document.querySelectorAll(".list__item");
+  const checkbox = document.querySelectorAll(".checkbox");
+
+  li.forEach((item) => {
+    item.classList.add("list__light");
+  });
+  radioLabel.forEach((item) => {
+    item.classList.add("radio__light");
+  });
+  checkbox.forEach((item) => {
+    item.classList.add("checkbox__light");
+  });
+
+  body.classList.add("body__light");
+  radioContainer.classList.add("box__light");
+  cont.classList.add("box__light");
+  container.classList.add("box__light");
+  input.classList.add("input__light");
+  clearButton.classList.add("input__light");
+
+  //
+  theme.classList.remove("sun");
+  theme.classList.add("moon");
+}
+
+function setDarkMode() {
+  const li = document.querySelectorAll(".list__item");
+  const checkbox = document.querySelectorAll(".checkbox");
+
+  li.forEach((item) => {
+    item.classList.remove("list__light");
+  });
+  radioLabel.forEach((item) => {
+    item.classList.remove("radio__light");
+  });
+  checkbox.forEach((item) => {
+    item.classList.remove("checkbox__light");
+  });
+
+  body.classList.remove("body__light");
+  radioContainer.classList.remove("box__light");
+  cont.classList.remove("box__light");
+  container.classList.remove("box__light");
+  input.classList.remove("input__light");
+  clearButton.classList.remove("input__light");
+
+  //
+  theme.classList.add("sun");
+  theme.classList.remove("moon");
 }

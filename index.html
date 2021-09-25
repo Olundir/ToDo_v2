@@ -13,11 +13,14 @@
   </head>
   <body>
     <div class="main__container">
-      <h1>TODO <span class="themeSwitch"></span></h1>
+      <div id="nav">
+        <h1>TODO</h1>
+        <div class="themeSwitch sun"></div>
+      </div>
       <input type="text" name="toDoInputField" id="toDo" class="inputField" placeholder="Create a new todo..." />
       <div class="main">
         <div class="container">
-          <div id="container__todo"></div>
+          <div id="container__todo" class="dark__todo"></div>
           <div class="container__nav">
             <h3><span class="no__items">0</span> items left</h3>
             <!-- Button for clearing Completed entries  -->

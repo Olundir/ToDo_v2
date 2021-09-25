@@ -18,15 +18,36 @@ body {
 }
 
 /* "LOGO"  */
+#nav {
+  display: flex;
+  justify-content: space-between;
+}
+
 h1 {
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 30px;
+  letter-spacing: 0.7rem;
+}
+
+.themeSwitch {
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.sun {
+  background-image: url("images/icon-sun.svg");
+}
+.moon {
+  background-image: url("images/icon-moon.svg");
 }
 
 /* Input  */
 
-#toDo {
+.inputField {
   width: 80%;
   padding: 5% 10%;
   border: none;
@@ -38,7 +59,8 @@ h1 {
 }
 
 /* List items  */
-#container__todo {
+
+.dark__todo {
   background-color: hsl(235, 24%, 19%);
   border-radius: 5px;
   box-shadow: 0 10px 20px hsl(235, 21%, 6%);
@@ -50,11 +72,8 @@ h1 {
   grid-template-columns: 1fr 9fr 1fr;
   background-color: hsl(235, 24%, 19%);
   padding: 20px 15px;
-  /* -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; */
   border-top: 1px solid hsl(237, 14%, 26%);
+  color: hsl(234, 39%, 85%);
 }
 .list__item:first-of-type {
   border-radius: 5px 5px 0 0;
@@ -65,7 +84,6 @@ h1 {
 }
 
 h2 {
-  color: hsl(234, 39%, 85%);
   position: relative;
   top: 5px;
   font-size: 0.9rem;
@@ -138,6 +156,10 @@ h3 {
   color: hsl(236, 33%, 92%);
 }
 
+.active__selection {
+  color: hsl(220, 98%, 61%);
+}
+
 .radio__container + h3 {
   text-align: center;
   margin-top: 20px;
@@ -158,4 +180,67 @@ h3 {
 .hidden {
   visibility: hidden;
   position: absolute;
+}
+
+/* Light theme  */
+
+.body__light {
+  background-color: hsl(236, 33%, 92%);
+  background-image: url("images/bg-mobile-light.jpg");
+}
+
+.list__light {
+  border-color: hsl(233, 11%, 84%);
+  background-color: hsl(0, 0%, 98%);
+  color: hsl(235, 19%, 35%);
+}
+.checkbox__light {
+  border-color: hsl(233, 11%, 84%);
+}
+
+.list__light:last-of-type {
+  border-bottom: 1px solid hsl(233, 11%, 84%);
+}
+
+.box__light {
+  box-shadow: 0 10px 20px rgb(209, 209, 209);
+  background-color: hsl(0, 0%, 98%);
+}
+
+.radio__light {
+  color: hsl(236, 9%, 61%);
+}
+
+.input__light {
+  background-color: hsl(0, 0%, 98%);
+  color: hsl(236, 9%, 61%);
+}
+.button__light {
+  background-color: hsl(0, 0%, 98%);
+  color: hsl(236, 9%, 61%);
+}
+.radio__light:hover,
+.button__light:hover {
+  color: hsl(235, 19%, 35%);
+}
+
+.done__light {
+  color: hsl(236, 9%, 61%);
+  text-decoration: line-through;
+}
+/* media queries  */
+
+@media (min-width: 380px) {
+  body {
+    background-image: url("images/bg-desktop-dark.jpg");
+    background-position: top;
+  }
+  .main__container {
+    max-width: 512px;
+    margin: 10% auto;
+  }
+  .body__light {
+    background-color: hsl(236, 33%, 92%);
+    background-image: url("images/bg-desktop-light.jpg");
+  }
 }
